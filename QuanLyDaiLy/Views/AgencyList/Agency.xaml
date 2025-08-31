@@ -8,35 +8,43 @@
           Padding="10" 
           RowSpacing="5">
         <Label Grid.ColumnSpan="2"
-               Grid.RowSpan="2"
-               Grid.Row="0"
                Text="Danh sách đại lý"
                TextColor="Black"
                FontSize="35"
                FontAttributes="Bold"
                VerticalOptions="Center"/>
 
+        <!-- Thanh tra cứu + reload -->
         <HorizontalStackLayout Grid.Row="2"
-                           Grid.Column="0"
-                           Spacing="10">
-            <Button Text="Tra cứu Đại lý"
-                BackgroundColor="#0EAAFD"
-                TextColor="White"
-                CornerRadius="8"
-                Padding="12,8"
-                ContentLayout="Left,10"
-                VerticalOptions="Center">
+                       Spacing="10" 
+                       Padding="10" 
+                       HorizontalOptions="Start">
+            <!-- Nút tra cứu -->
+            <Button Text="Tra cứu Đại lý"
+            BackgroundColor="#0EAAFD"
+            TextColor="White"
+            CornerRadius="8"
+            Padding="12,8"
+            ContentLayout="Left,10"
+            Clicked="OnSearchAgencyClicked">
                 <Button.ImageSource>
-                    <FontImageSource Glyph="&#xE801;" FontFamily="MyIcons" Size="16" Color="White"/>
+                    <FontImageSource Glyph="&#xE801;" 
+                             FontFamily="MyIcons" 
+                             Size="16" 
+                             Color="White"/>
                 </Button.ImageSource>
             </Button>
+
+            <!-- Nút reload -->
             <ImageButton BackgroundColor="#0EAAFD"
-                     VerticalOptions="Center"
-                     CornerRadius="5">
+                 CornerRadius="5"
+                 Padding="10"
+                 Clicked="OnReloadAgencyClicked">
                 <ImageButton.Source>
                     <FontImageSource Glyph="&#xE803;"
-                                FontFamily="MyIcons"
-                                Size="16"/>
+                             FontFamily="MyIcons"
+                             Size="16"
+                             Color="White"/>
                 </ImageButton.Source>
             </ImageButton>
         </HorizontalStackLayout>
