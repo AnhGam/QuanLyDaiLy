@@ -3,6 +3,7 @@ using QuanLyDaiLy.Data;
 using Microsoft.EntityFrameworkCore;
 using QuanLyDaiLy.Views.AgencyList;
 using QuanLyDaiLy.Views.AgencyAdd;
+using QuanLyDaiLy.Helpers;
 
 namespace QuanLyDaiLy
 {
@@ -28,9 +29,8 @@ namespace QuanLyDaiLy
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
-            builder.Services.AddTransient<Agency>();
-            builder.Services.AddTransient<AgencyAdd>();
             builder.Services.AddTransient<Views.AgencyList.Agency>();
+            builder.Services.AddTransient<AgencyAdd>();
             var app = builder.Build();
 
             // 🔥 Tạo DB tại đây (sau khi DI đã sẵn sàng)
@@ -38,6 +38,7 @@ namespace QuanLyDaiLy
             {
                 var db = scope.ServiceProvider.GetRequiredService<DataContext>();
                 db.Database.EnsureCreated();
+                DatabaseSeeder.Seed(db);
             }
 
             return app;
