@@ -34,4 +34,14 @@ public partial class Agency : ContentPage
         var page = _serviceProvider.GetRequiredService<QuanLyDaiLy.Views.AgencyAdd.AgencyAdd>();
         await Navigation.PushAsync(page);
     }
+    private void OnSearchAgencyClicked(object sender, EventArgs e)
+    {
+        // Tạm thời bỏ trống
+    }
+
+    private void OnReloadAgencyClicked(object sender, EventArgs e)
+    {
+        LoadData();
+        OnPropertyChanged(nameof(DaiLyList)); // notify UI cập nhật lại
+    }
 }
