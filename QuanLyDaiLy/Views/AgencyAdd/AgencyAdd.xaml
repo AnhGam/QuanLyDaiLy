@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             x:Class="QuanLyDaiLy.Views.AgencyAdd.AgencyAdd"
+             BackgroundColor="White">
+
+    <Grid RowDefinitions="Auto, *"
+          ColumnDefinitions="*"
+          Padding="10" 
+          RowSpacing="10">
+
+        <!-- Tiêu đề -->
+        <Label Grid.Row="0"
+               Text="Tiếp nhận đại lý"
+               TextColor="Black"
+               FontSize="35"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"
+               Margin="0,10,0,20"/>
+
+        <!-- Form nhập liệu -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="15" Padding="10">
+
+                <!-- Mã đại lý -->
+                <HorizontalStackLayout Spacing="10">
+                    <Label Text="Mã đại lý"
+                           VerticalOptions="Center"
+                           WidthRequest="120"
+                           FontAttributes="Bold"/>
+                    <Entry Placeholder="(Tự động sinh)"
+                           IsEnabled="False"
+                           WidthRequest="200"
+                           x:Name="txtMaDaiLy"/>
+                </HorizontalStackLayout>
+
+                <!-- Tên đại lý -->
+                <HorizontalStackLayout Spacing="10">
+                    <Label Text="Tên đại lý"
+                           VerticalOptions="Center"
+                           WidthRequest="120"
+                           FontAttributes="Bold"/>
+                    <Entry Placeholder="Nhập tên đại lý"
+                           WidthRequest="200"
+                           x:Name="txtTenDaiLy"/>
+                </HorizontalStackLayout>
+
+                <!-- Loại đại lý -->
+                <HorizontalStackLayout Spacing="10">
+                    <Label Text="Tên loại đại lý"
+                           VerticalOptions="Center"
+                           WidthRequest="120"
+                           FontAttributes="Bold"/>
+                    <Picker Title="Chọn loại đại lý"
+                            WidthRequest="200"
+                            x:Name="pickerLoaiDaiLy"/>
+                </HorizontalStackLayout>
+
+                <!-- Quận -->
+                <HorizontalStackLayout Spacing="10">
+                    <Label Text="Tên quận"
+                           VerticalOptions="Center"
+                           WidthRequest="120"
+                           FontAttributes="Bold"/>
+                    <Picker Title="Chọn quận"
+                            WidthRequest="200"
+                            x:Name="pickerQuan"/>
+                </HorizontalStackLayout>
+
+                <!-- Số điện thoại + Email -->
+                <HorizontalStackLayout Spacing="10">
+                    <Label Text="Số điện thoại"
+                           VerticalOptions="Center"
+                           WidthRequest="120"
+                           FontAttributes="Bold"/>
+                    <Entry Placeholder="Nhập số điện thoại"
+                           WidthRequest="150"
+                           Keyboard="Telephone"
+                           x:Name="txtDienThoai"/>
+
+                    <Label Text="Email"
+                           VerticalOptions="Center"
+                           WidthRequest="80"
+                           FontAttributes="Bold"/>
+                    <Entry Placeholder="Nhập email"
+                           WidthRequest="200"
+                           Keyboard="Email"
+                           x:Name="txtEmail"/>
+                </HorizontalStackLayout>
+
+                <!-- Ngày tiếp nhận -->
+                <HorizontalStackLayout Spacing="10">
+                    <Label Text="Ngày tiếp nhận"
+                           VerticalOptions="Center"
+                           WidthRequest="120"
+                           FontAttributes="Bold"/>
+                    <DatePicker x:Name="dateNgayTiepNhan"
+                                Date="{x:Static sys:DateTime.Today}"/>
+                </HorizontalStackLayout>
+
+                <!-- Địa chỉ -->
+                <HorizontalStackLayout Spacing="10">
+                    <Label Text="Địa chỉ"
+                           VerticalOptions="Center"
+                           WidthRequest="120"
+                           FontAttributes="Bold"/>
+                    <Entry Placeholder="Nhập địa chỉ"
+                           WidthRequest="400"
+                           x:Name="txtDiaChi"/>
+                </HorizontalStackLayout>
+
+                <!-- Các nút chức năng -->
+                <HorizontalStackLayout Spacing="15"
+                                       HorizontalOptions="Center"
+                                       Margin="0,20,0,0">
+                    <Button Text="➕ Tiếp nhận đại lý"
+                            BackgroundColor="#0EAAFD"
+                            TextColor="White"
+                            CornerRadius="8"
+                            Padding="15,8"
+                            Clicked="OnSaveAgencyClicked"/>
+
+                    <Button Text="🔄 Đại lý mới"
+                            BackgroundColor="#0EAAFD"
+                            TextColor="White"
+                            CornerRadius="8"
+                            Padding="15,8"
+                            Clicked="OnResetClicked"/>
+
+                    <Button Text="➡ Thoát"
+                            BackgroundColor="#0EAAFD"
+                            TextColor="White"
+                            CornerRadius="8"
+                            Padding="15,8"
+                            Clicked="OnExitClicked"/>
+                </HorizontalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+</ContentPage>

@@ -1,0 +1,134 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuanLyDaiLy.Views.AgencyList.Agency"
+             BackgroundColor="White">
+    <Grid RowDefinitions="Auto, Auto, Auto,Auto,*"
+          ColumnDefinitions=".5*, .5*"
+          BackgroundColor="White"
+          Padding="10" 
+          RowSpacing="5">
+        <Label Grid.ColumnSpan="2"
+               Grid.RowSpan="2"
+               Grid.Row="0"
+               Text="Danh sách đại lý"
+               TextColor="Black"
+               FontSize="35"
+               FontAttributes="Bold"
+               VerticalOptions="Center"/>
+
+        <HorizontalStackLayout Grid.Row="2"
+                           Grid.Column="0"
+                           Spacing="10">
+            <Button Text="Tra cứu Đại lý"
+                BackgroundColor="#0EAAFD"
+                TextColor="White"
+                CornerRadius="8"
+                Padding="12,8"
+                ContentLayout="Left,10"
+                VerticalOptions="Center">
+                <Button.ImageSource>
+                    <FontImageSource Glyph="&#xE801;" FontFamily="MyIcons" Size="16" Color="White"/>
+                </Button.ImageSource>
+            </Button>
+            <ImageButton BackgroundColor="#0EAAFD"
+                     VerticalOptions="Center"
+                     CornerRadius="5">
+                <ImageButton.Source>
+                    <FontImageSource Glyph="&#xE803;"
+                                FontFamily="MyIcons"
+                                Size="16"/>
+                </ImageButton.Source>
+            </ImageButton>
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout Grid.Row="2"
+                           Grid.Column="1"
+                           Spacing="10"
+                           HorizontalOptions="End">
+            <Button Text="Tiếp nhận đại lý"
+                BackgroundColor="#0EAAFD"
+                TextColor="White"
+                CornerRadius="8"
+                Clicked="OnAddAgencyClicked"
+                Padding="12,8"
+                ContentLayout="Left,10"
+                VerticalOptions="Center">
+                <Button.ImageSource>
+                    <FontImageSource Glyph="&#xE802;" FontFamily="MyIcons" Size="16" Color="White"/>
+                </Button.ImageSource>
+            </Button>
+
+            <Button Text="Cập nhật Đại Lý"
+                BackgroundColor="#0EAAFD"
+                TextColor="White"
+                CornerRadius="8"
+                Padding="12,8"
+                ContentLayout="Left,10"
+                VerticalOptions="Center">
+                <Button.ImageSource>
+                    <FontImageSource Glyph="&#xE804;" FontFamily="MyIcons" Size="16" Color="White"/>
+                </Button.ImageSource>
+            </Button>
+
+            <Button Text="Xóa đại lý"
+                BackgroundColor="#0EAAFD"
+                TextColor="White"
+                CornerRadius="8"
+                Padding="12,8"
+                ContentLayout="Left,10"
+                VerticalOptions="Center">
+                <Button.ImageSource>
+                    <FontImageSource Glyph="&#xE800;" FontFamily="MyIcons" Size="16" Color="White"/>
+                </Button.ImageSource>
+            </Button>
+        </HorizontalStackLayout>
+        
+        <!-- Header -->
+        <Grid Grid.Row="3" Grid.ColumnSpan="2"
+              ColumnDefinitions="0.7*,2*,2*,1.5*,1.5*,2*,2*"
+              Padding="5"
+              BackgroundColor="#f2f2f2">
+            <Label Text="Mã" FontAttributes="Bold" Grid.Column="0"/>
+            <Label Text="Tên đại lý" FontAttributes="Bold" Grid.Column="1"/>
+            <Label Text="Địa chỉ" FontAttributes="Bold" Grid.Column="2"/>
+            <Label Text="Quận" FontAttributes="Bold" Grid.Column="3"/>
+            <Label Text="Loại" FontAttributes="Bold" Grid.Column="4"/>
+            <Label Text="Điện thoại" FontAttributes="Bold" Grid.Column="5"/>
+            <Label Text="Ngày tiếp nhận" FontAttributes="Bold" Grid.Column="6"/>
+        </Grid>
+
+        <!-- DsDaiLy -->
+        <CollectionView Grid.Row="4" Grid.ColumnSpan="2"
+                        ItemsSource="{Binding DaiLyList}"
+                        VerticalOptions="Fill">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Stroke="#e0e0e0"
+                        StrokeShape="RoundRectangle 6"
+                        Margin="5"
+                        Padding="10">
+                        <Grid ColumnSpacing="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.7*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="1.5*"/>
+                                <ColumnDefinition Width="1.5*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Column="0" Text="{Binding MaDaiLy}" FontAttributes="Bold"/>
+                            <Label Grid.Column="1" Text="{Binding TenDaiLy}" />
+                            <Label Grid.Column="2" Text="{Binding DiaChi}" />
+                            <Label Grid.Column="3" Text="{Binding Quan.TenQuan}" />
+                            <Label Grid.Column="4" Text="{Binding LoaiDaiLy.TenLoaiDaiLy}" />
+                            <Label Grid.Column="5" Text="{Binding DienThoai}" />
+                            <Label Grid.Column="6" Text="{Binding NgayTiepNhan, StringFormat='{0:dd/MM/yyyy}'}"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
